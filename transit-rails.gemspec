@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Transit::Rails::VERSION
   spec.authors       = ["Joshua Davey"]
   spec.email         = ["josh@joshuadavey.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Transit format helpers for Rails}
+  spec.description   = %q{Transit format helpers for Rails. See Cognitect's transit-format for more info.}
+  spec.homepage      = "https://github.com/jgdavey/transit-rails"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,10 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "transit-ruby", "~> 0.8.467"
+  spec.add_dependency "transit-ruby", "~> 0.8", ">= 0.8.467"
   spec.add_dependency "rails", "~> 4.0"
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
 end
