@@ -1,6 +1,9 @@
-# TransitRails
+# transit-rails
 
-TODO: Write a gem description
+Use [transit format](https://github.com/cognitect/transit-format) in
+your Rails application, with minimal friction.
+
+Currently only works with C-based Ruby implementations.
 
 ## Installation
 
@@ -14,11 +17,21 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install transit_rails
+    $ gem install transit-rails
 
 ## Usage
 
-TODO: Write usage instructions here
+In your controller:
+
+```ruby
+def index
+  @posts = Post.all
+  respond_to do |format|
+    format.html
+    format.transit { render transit: @posts }
+  end
+end
+```
 
 ## Contributing
 
