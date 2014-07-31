@@ -1,5 +1,7 @@
 # transit-rails
 
+![Travis status](https://travis-ci.org/jgdavey/transit-rails.svg?branch=master)
+
 Use [transit format](https://github.com/cognitect/transit-format) in
 your Rails application, with minimal friction.
 
