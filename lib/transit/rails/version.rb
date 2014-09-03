@@ -1,5 +1,5 @@
 module Transit
   module Rails
-    VERSION = "0.8.0.beta"
+    VERSION = "0.8.1"
   end
 end
