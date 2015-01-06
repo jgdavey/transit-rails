@@ -4,7 +4,7 @@
 
 Use [transit format][] in your Rails application, with minimal friction.
 
-Currently only works with C-based Ruby implementations.
+Works wherever `transit-ruby` does.
 
 ## Installation
 
