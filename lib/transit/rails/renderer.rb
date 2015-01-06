@@ -12,6 +12,7 @@ module Transit
         @format = options[:verbose] ? :json_verbose : :json
         @handlers = TRANSIT_HANDLERS.merge(options[:handlers] || {})
         @io = io
+        @symbolize_keys = options[:symbolize_keys]
       end
 
       def write
@@ -37,7 +38,11 @@ module Transit
         if obj.respond_to?(:to_transit)
           obj.to_transit
         elsif obj.respond_to?(:serializable_hash)
-          obj.serializable_hash
+          if @symbolize_keys
+            obj.serializable_hash.symbolize_keys
+          else
+            obj.serializable_hash
+          end
         elsif obj.respond_to?(:to_ary)
           obj.to_ary.map {|o| serialize_for_transit(o)}
         else
