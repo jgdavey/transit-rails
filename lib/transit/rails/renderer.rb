@@ -22,9 +22,13 @@ module Transit
 
       def render
         return @rendered if defined?(@rendered)
-        write
-        @io.rewind
-        @rendered = @io.read
+        if @object.respond_to?(:to_transit)
+          @rendered = @object.to_transit(handlers: @handlers)
+        else
+          write
+          @io.rewind
+          @rendered = @io.read
+        end
       end
 
       def to_s
@@ -35,7 +39,7 @@ module Transit
       private
       def serialize_for_transit(obj)
         return obj if String === obj
-        if obj.respond_to?(:to_transit)
+        if obj.respond_to?(:as_transit)
           obj.to_transit
         elsif obj.respond_to?(:serializable_hash)
           if @symbolize_keys
