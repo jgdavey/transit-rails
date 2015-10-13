@@ -24,7 +24,6 @@ module Transit
         app.middleware.swap("ActionDispatch::ParamsParser",
                             "ActionDispatch::ParamsParser", {
                               Mime::TRANSIT => Transit::Rails::Reader.make_reader(:json),
-                              Mime::TRANSIT_VERBOSE => Transit::Rails::Reader.make_reader(:json_verbose),
                               Mime::TRANSIT_MSGPACK => Transit::Rails::Reader.make_reader(:msgpack)
                             })
       end
