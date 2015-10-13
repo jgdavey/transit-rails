@@ -50,6 +50,16 @@ describe Transit::Rails::Renderer do
       rendered = render(points, {handlers: handlers}, io)
       expect(points).to eq decode(rendered, {"point" => point_handler.new})
     end
+
+    it "passes the handlers to to_transit" do
+      handlers = { Point => point_handler.new }
+
+      io = StringIO.new
+      points = [Point.new(1,2), Point.new(3,4)]
+      expect(points).to receive(:to_transit).with(hash_including(handlers: hash_including(Point))).and_return("foo")
+      rendered = render(points, {handlers: handlers}, io)
+      expect(rendered).to eq "foo"
+    end
   end
 
   context "verbosity" do
