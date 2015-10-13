@@ -35,8 +35,8 @@ module Transit
       private
       def serialize_for_transit(obj)
         return obj if String === obj
-        if obj.respond_to?(:to_transit)
-          obj.to_transit
+        if obj.respond_to?(:as_transit)
+          obj.as_transit
         elsif obj.respond_to?(:serializable_hash)
           if @symbolize_keys
             obj.serializable_hash.symbolize_keys
