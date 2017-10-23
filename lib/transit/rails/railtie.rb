@@ -21,8 +21,8 @@ module Transit
 
       initializer "transit.configure_rails_initialization" do |app|
         require 'transit/rails/reader'
-        parameter_parsers = { Mime::TRANSIT => Transit::Rails::Reader.make_reader(:json),
-                              Mime::TRANSIT_MSGPACK => Transit::Rails::Reader.make_reader(:msgpack) }
+        parameter_parsers = { Mime[:TRANSIT] => Transit::Rails::Reader.make_reader(:json),
+                              Mime[:TRANSIT_MSGPACK] => Transit::Rails::Reader.make_reader(:msgpack) }
         if ActionDispatch::Request.respond_to?(:parameter_parsers=)
           ActionDispatch::Request.parameter_parsers = (ActionDispatch::Request.parameter_parsers || {}).merge(parameter_parsers)
         else
