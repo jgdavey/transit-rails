@@ -18,7 +18,12 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "transit-ruby", "~> 0.8", ">= 0.8.602"
+  if defined?(RUBY_PLATFORM) && RUBY_PLATFORM == "java"
+    # Work around most recent versions not working with java
+    spec.add_dependency "transit-ruby", "~> 0.8", "<= 0.8.591"
+  else
+    spec.add_dependency "transit-ruby", "~> 0.8", ">= 0.8.602"
+  end
 
   spec.add_development_dependency "bundler", "~> 1.6"
 end
